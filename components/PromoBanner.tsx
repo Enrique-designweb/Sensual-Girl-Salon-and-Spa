@@ -1,14 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
+// Los nombres coinciden con los archivos en public/videos/
 const promos = [
-  { src: "/promo1.webp", alt: "Antes y Después 1", tipo: "image" },
-  { src: "/promo2.gif", alt: "Antes y Después 2", tipo: "image" },
-  { src: "/promo-video.mp4", alt: "Video Tratamiento", tipo: "video" },
-  { src: "/promo3.webp", alt: "Antes y Después 3", tipo: "image" },
-  { src: "/promo4.webp", alt: "Antes y Después 4", tipo: "image" },
+  { src: "/videos/promo-1.mp4", titulo: "Alta Cosmética Profesional" },
+  { src: "/videos/promo-2.mp4", titulo: "Experiencia Exclusiva" },
+  { src: "/videos/promo-3.mp4", titulo: "Bienestar en Pareja" },
+  { src: "/videos/promo-4.mp4", titulo: "Labios de Ensueño" },
 ];
 
 export default function PromoBanner() {
@@ -25,35 +24,28 @@ export default function PromoBanner() {
       
       {/* Contenedor del carrusel infinito */}
       <div className="relative z-10 flex w-[200%]">
+        
         {/* Primera copia del carrusel */}
         <motion.div 
           className="flex gap-6 w-1/2 pl-6"
           animate={{ x: ["0%", "-100%"] }}
-          transition={{ ease: "linear", duration: 25, repeat: Infinity }}
+          transition={{ ease: "linear", duration: 40, repeat: Infinity }}
         >
           {promos.map((promo, index) => (
-            <div key={index} className="relative w-64 h-80 md:w-80 md:h-96 shrink-0 rounded-xl overflow-hidden border border-spa-gold/40 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
-              {promo.tipo === "video" ? (
-                <video 
-                  src={promo.src} 
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline 
-                  className="object-cover w-full h-full"
-                />
-              ) : (
-                <Image 
-                  src={promo.src} 
-                  alt={promo.alt} 
-                  fill 
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover"
-                />
-              )}
-              {/* Etiqueta de Antes/Después opcional */}
-              <div className="absolute bottom-0 inset-x-0 bg-linear-to-trom-black/80 to-transparent p-4">
-                <p className="font-sans text-xs text-spa-gold font-bold tracking-widest uppercase">Antes / Después</p>
+            <div 
+              key={index} 
+              className="relative w-56 md:w-64 aspect-9/16 shrink-0 rounded-xl overflow-hidden border border-spa-gold/40 shadow-[0_8px_32px_rgba(0,0,0,0.5)] bg-black"
+            >
+              <video 
+                src={promo.src} 
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+                className="object-cover w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-300"
+              />
+              <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-black/90 via-black/50 to-transparent p-4">
+                <p className="font-sans text-xs text-spa-gold font-bold tracking-widest uppercase leading-tight">{promo.titulo}</p>
               </div>
             </div>
           ))}
@@ -63,30 +55,23 @@ export default function PromoBanner() {
         <motion.div 
           className="flex gap-6 w-1/2 pl-6"
           animate={{ x: ["0%", "-100%"] }}
-          transition={{ ease: "linear", duration: 25, repeat: Infinity }}
+          transition={{ ease: "linear", duration: 40, repeat: Infinity }}
         >
           {promos.map((promo, index) => (
-            <div key={`dup-${index}`} className="relative w-64 h-80 md:w-80 md:h-96 shrink-0 rounded-xl overflow-hidden border border-spa-gold/40 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
-              {promo.tipo === "video" ? (
-                <video 
-                  src={promo.src} 
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline 
-                  className="object-cover w-full h-full"
-                />
-              ) : (
-                <Image 
-                  src={promo.src} 
-                  alt={promo.alt} 
-                  fill 
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover"
-                />
-              )}
-              <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-black/80 to-transparent p-4">
-                <p className="font-sans text-xs text-spa-gold font-bold tracking-widest uppercase">Antes / Después</p>
+            <div 
+              key={`dup-${index}`} 
+              className="relative w-56 md:w-64 aspect-9/16 shrink-0 rounded-xl overflow-hidden border border-spa-gold/40 shadow-[0_8px_32px_rgba(0,0,0,0.5)] bg-black"
+            >
+              <video 
+                src={promo.src} 
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+                className="object-cover w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-300"
+              />
+              <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-black/90 via-black/50 to-transparent p-4">
+                <p className="font-sans text-xs text-spa-gold font-bold tracking-widest uppercase leading-tight">{promo.titulo}</p>
               </div>
             </div>
           ))}
