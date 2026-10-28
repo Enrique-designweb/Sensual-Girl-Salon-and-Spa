@@ -4,6 +4,8 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import AdminClient from "./AdminClient";
 
+export const dynamic = 'force-dynamic'; // <-- Asegúrate de tener esto
+
 export default async function AdminPage() {
   // 1. Intentamos leer la sesión de NextAuth (Google)
   const session = await auth();
