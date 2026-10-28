@@ -1,0 +1,21 @@
+{
+  "name": "Sensual Girl Spa",
+  "short_name": "Sensual Girl",
+  "description": "Tu bienestar, mi prioridad.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#3D0810",
+  "theme_color": "#3D0810",
+  "icons": [
+    {
+      "src": "/logo-face.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo-face.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
