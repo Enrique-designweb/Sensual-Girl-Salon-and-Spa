@@ -1,10 +1,8 @@
-const CACHE_NAME = 'sensual-girl-v1';
+const CACHE_NAME = 'sensual-girl-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/shop',
-  '/admin',
-  '/servicios/legna',
-  '/servicios/kleyan',
+  '/login',
   '/manifest.json',
   '/logo-face.png',
   '/legna.webp',
@@ -16,17 +14,13 @@ const ASSETS_TO_CACHE = [
   '/galeria5.webp',
 ];
 
-// Instalar y cachear los archivos base
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE);
-    })
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE))
   );
   self.skipWaiting();
 });
 
-// Activar y limpiar cachés viejos
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -40,18 +34,20 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Interceptar peticiones (Cache First, Network Fallback)
 self.addEventListener('fetch', (event) => {
+  // Estrategia: Cache First, luego Red (para cargar offline rápido)
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) return cachedResponse;
-
+      if (cachedResponse) {
+        return cachedResponse; // Si está en caché, lo devuelve al instante
+      }
+      
       return fetch(event.request).then((networkResponse) => {
-        // Si es una imagen o un archivo estático, lo guardamos en caché
-        if (event.request.url.match(/\.(png|jpg|jpeg|webp|css|js|ttf)$/)) {
-          return caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, networkResponse.clone());
-            return networkResponse;
+        // Si es una imagen o un video, guardarlo en caché para la próxima
+        if (event.request.url.match(/\.(png|jpg|jpeg|webp|css|js|ttf|mp4)$/)) {
+          const responseClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseClone);
           });
         }
         return networkResponse;

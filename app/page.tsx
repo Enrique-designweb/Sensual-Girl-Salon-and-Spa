@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, ChevronDown, Sparkles, MapPin, Phone, ArrowDown, ArrowRight } from "lucide-react";
-import PromoBanner from "@/components/PromoBanner"; // Importamos el nuevo banner
+import PromoBanner from "@/components/PromoBanner";
 
 export default function Home() {
   const [showWhatsApp, setShowWhatsApp] = useState(false);
@@ -71,34 +71,36 @@ export default function Home() {
           {/* Tarjeta Legna */}
           <motion.div 
             onClick={() => setActiveCard(activeCard === 'legna' ? null : 'legna')}
-            onMouseEnter={() => setActiveCard('legna')}
-            onMouseLeave={() => setActiveCard(null)}
-            animate={{ scale: activeCard === 'legna' ? 1.02 : 1 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="relative w-full h-125 rounded-2xl overflow-hidden border border-spa-gold/30 cursor-pointer shadow-xl group"
+            className="relative w-full h-125nded-2xl overflow-hidden border border-spa-gold/30 cursor-pointer shadow-xl group"
           >
-            <Image src="/legna.webp" alt="Legna" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-linear-to-t from-spa-burgundy via-transparent to-transparent opacity-80"></div>
+            <Image src="/legna.webp" alt="Legna" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-110" priority />
+            <div className="absolute inset-0 bg-linear-to-t from-spa-burgundy via-transparent to-transparent opacity-90"></div>
             
-            <div className="absolute bottom-6 left-6 z-10">
-              <h3 className="font-serif text-4xl text-spa-marble">Legna</h3>
-              <p className="font-sans text-xs tracking-widest uppercase text-spa-gold">Especialista en Masajes</p>
+            <div className="absolute bottom-6 left-6 z-10 right-6 flex justify-between items-end">
+              <div>
+                <h3 className="font-serif text-4xl text-spa-marble">Legna</h3>
+                <p className="font-sans text-xs tracking-widest uppercase text-spa-gold mb-2">Especialista en Masajes</p>
+                {/* TEXTO UX PARA INDICAR CLIC */}
+                <span className="text-xs font-sans text-spa-marble/90 flex items-center gap-1 bg-spa-burgundy/60 px-3 py-1.5 rounded-full backdrop-blur-sm border border-spa-gold/30">
+                  Toca para conocer más <ArrowRight size={12} />
+                </span>
+              </div>
             </div>
 
             <AnimatePresence>
               {activeCard === 'legna' && (
                 <motion.div 
-                  initial={{ x: '100%', opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: '100%', opacity: 0 }}
+                  initial={{ y: '100%', opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: '100%', opacity: 0 }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  className="absolute inset-y-0 right-0 w-full md:w-4/5 bg-spa-burgundy/60 backdrop-blur-md border-l border-spa-gold/30 p-8 flex flex-col justify-center"
+                  className="absolute inset-0 bg-spa-burgundy/85 backdrop-blur-xl p-8 flex flex-col justify-center"
                 >
-                  <Sparkles className="text-spa-gold mb-4" size={28} />
+                  <Sparkles className="text-spa-gold mb-4" size={32} />
                   <p className="font-sans text-sm md:text-base text-spa-marble leading-relaxed mb-6">
                     Con años de experiencia en terapias corporales, Legna se especializa en liberar tensiones profundas, mejorar la circulación y brindar una relajación absoluta.
                   </p>
-                  <Link href="/servicios/legna" className="inline-flex items-center gap-2 text-spa-gold font-sans text-xs font-bold tracking-wider hover:text-spa-marble transition-colors">
+                  <Link href="/servicios/legna" className="inline-flex items-center gap-2 text-spa-gold font-sans text-sm font-bold tracking-wider hover:text-spa-marble transition-colors">
                     VER TRATAMIENTOS <ArrowRight size={16} />
                   </Link>
                 </motion.div>
@@ -109,34 +111,35 @@ export default function Home() {
           {/* Tarjeta Kleyan */}
           <motion.div 
             onClick={() => setActiveCard(activeCard === 'kleyan' ? null : 'kleyan')}
-            onMouseEnter={() => setActiveCard('kleyan')}
-            onMouseLeave={() => setActiveCard(null)}
-            animate={{ scale: activeCard === 'kleyan' ? 1.02 : 1 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
             className="relative w-full h-125 rounded-2xl overflow-hidden border border-spa-gold/30 cursor-pointer shadow-xl group"
           >
-            <Image src="/kleyan.webp" alt="Kleyan" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-linear-to-t from-spa-burgundy via-transparent to-transparent opacity-80"></div>
+            <Image src="/kleyan.webp" alt="Kleyan" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-110" priority />
+            <div className="absolute inset-0 bg-linear-to-t from-spa-burgundy via-transparent to-transparent opacity-90"></div>
             
-            <div className="absolute bottom-6 left-6 z-10">
-              <h3 className="font-serif text-4xl text-spa-marble">Kleyan</h3>
-              <p className="font-sans text-xs tracking-widest uppercase text-spa-gold">Especialista Facial</p>
+            <div className="absolute bottom-6 left-6 z-10 right-6 flex justify-between items-end">
+              <div>
+                <h3 className="font-serif text-4xl text-spa-marble">Kleyan</h3>
+                <p className="font-sans text-xs tracking-widest uppercase text-spa-gold mb-2">Especialista Facial</p>
+                <span className="text-xs font-sans text-spa-marble/90 flex items-center gap-1 bg-spa-burgundy/60 px-3 py-1.5 rounded-full backdrop-blur-sm border border-spa-gold/30">
+                  Toca para conocer más <ArrowRight size={12} />
+                </span>
+              </div>
             </div>
 
             <AnimatePresence>
               {activeCard === 'kleyan' && (
                 <motion.div 
-                  initial={{ x: '100%', opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: '100%', opacity: 0 }}
+                  initial={{ y: '100%', opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: '100%', opacity: 0 }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  className="absolute inset-y-0 right-0 w-full md:w-4/5 bg-spa-burgundy/60 backdrop-blur-md border-l border-spa-gold/30 p-8 flex flex-col justify-center"
+                  className="absolute inset-0 bg-spa-burgundy/85 backdrop-blur-xl p-8 flex flex-col justify-center"
                 >
-                  <Sparkles className="text-spa-gold mb-4" size={28} />
+                  <Sparkles className="text-spa-gold mb-4" size={32} />
                   <p className="font-sans text-sm md:text-base text-spa-marble leading-relaxed mb-6">
-                    Apasionada por la estética avanzada, Kleyan combina técnicas de vanguardia como microneedling y armonización facial para rejuvenecer tu piel.
+                    Apasionada por la estética avanzada, Kleyan combina técnicas de vanguardia como microneedling, exosomas y armonización facial para rejuvenecer tu piel.
                   </p>
-                  <Link href="/servicios/kleyan" className="inline-flex items-center gap-2 text-spa-gold font-sans text-xs font-bold tracking-wider hover:text-spa-marble transition-colors">
+                  <Link href="/servicios/kleyan" className="inline-flex items-center gap-2 text-spa-gold font-sans text-sm font-bold tracking-wider hover:text-spa-marble transition-colors">
                     VER TRATAMIENTOS <ArrowRight size={16} />
                   </Link>
                 </motion.div>
