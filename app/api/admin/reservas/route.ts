@@ -1,12 +1,8 @@
 import { neon } from '@neondatabase/serverless';
-import { NextResponse } from 'next/server';
-
-// Estas 3 líneas obligan a Next.js a no pre-renderizar ni cachear la ruta
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-export const fetchCache = 'force-no-store';
+import { connection, NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
+  await connection();
   try {
     const { searchParams } = new URL(request.url);
     const especialistaId = searchParams.get('especialista_id');
