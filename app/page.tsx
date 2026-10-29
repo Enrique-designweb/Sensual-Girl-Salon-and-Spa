@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col items-center overflow-hidden bg-spa-burgundy">
       
-      {/* HERO LIMPIO */}
+      {/* HERO */}
       <section className="w-full min-h-dvh relative flex flex-col items-center justify-center text-center px-4 pt-10">
         <div className="absolute inset-0 opacity-15 bg-[radial-gradient(ellipse_at_center,var(--color-spa-gold)_0%,transparent_65%)] pointer-events-none"></div>
         <div className="relative z-10 flex flex-col items-center max-w-2xl mx-auto">
@@ -50,7 +50,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* DIVISOR DORADO */}
       <div className="relative w-full h-16 bg-spa-burgundy flex items-center justify-center -mt-8 z-20">
         <div className="absolute w-full h-px bg-spa-gold/50"></div>
         <div className="relative bg-spa-burgundy px-6 py-2"><div className="w-8 h-8 border border-spa-gold rotate-45 flex items-center justify-center bg-spa-burgundy"><div className="w-3 h-3 bg-spa-gold"></div></div></div>
@@ -58,7 +57,7 @@ export default function Home() {
 
       <PromoBanner />
 
-      {/* SECCIÓN SOBRE NOSOTRAS */}
+      {/* SOBRE NOSOTRAS */}
       <section id="sobre-nosotras" className="w-full py-24 px-6 relative">
         <div className="text-center mb-16">
           <Sparkles className="mx-auto text-spa-gold mb-4" size={32} />
@@ -71,7 +70,7 @@ export default function Home() {
           {/* Tarjeta Legna */}
           <motion.div 
             onClick={() => setActiveCard(activeCard === 'legna' ? null : 'legna')}
-            className="relative w-full h-125nded-2xl overflow-hidden border border-spa-gold/30 cursor-pointer shadow-xl group"
+            className="relative w-full h-125 rounded-2xl overflow-hidden border border-spa-gold/30 cursor-pointer shadow-xl group"
           >
             <Image src="/legna.webp" alt="Legna" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-110" priority />
             <div className="absolute inset-0 bg-linear-to-t from-spa-burgundy via-transparent to-transparent opacity-90"></div>
@@ -88,7 +87,7 @@ export default function Home() {
 
             <AnimatePresence>
               {activeCard === 'legna' && (
-                <motion.div initial={{ y: '100%', opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: '100%', opacity: 0 }} transition={{ type: "spring", stiffness: 300, damping: 30 }} className="absolute inset-0 bg-spa-burgundy/85 backdrop-blur-xl p-8 flex flex-col justify-center">
+                <motion.div initial={{ y: '100%', opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: '100%', opacity: 0 }} transition={{ type: "spring", stiffness: 300, damping: 30 }} className="absolute inset-0 bg-spa-burgundy/85 backdrop-blur-xl p-8 flex flex-col justify-center z-20">
                   <Sparkles className="text-spa-gold mb-4" size={32} />
                   <p className="font-sans text-sm md:text-base text-spa-marble leading-relaxed mb-6">
                     Con años de experiencia en terapias corporales, Legna se especializa en liberar tensiones profundas, mejorar la circulación y brindar una relajación absoluta.
@@ -104,7 +103,7 @@ export default function Home() {
           {/* Tarjeta Kleyan */}
           <motion.div 
             onClick={() => setActiveCard(activeCard === 'kleyan' ? null : 'kleyan')}
-            className="relative w-full h-125 rounded-2xl overflow-hidden border border-spa-gold/30 cursor-pointer shadow-xl group"
+            className="relative w-full h-125nded-2xl overflow-hidden border border-spa-gold/30 cursor-pointer shadow-xl group"
           >
             <Image src="/kleyan.webp" alt="Kleyan" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-110" priority />
             <div className="absolute inset-0 bg-linear-to-t from-spa-burgundy via-transparent to-transparent opacity-90"></div>
@@ -121,7 +120,7 @@ export default function Home() {
 
             <AnimatePresence>
               {activeCard === 'kleyan' && (
-                <motion.div initial={{ y: '100%', opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: '100%', opacity: 0 }} transition={{ type: "spring", stiffness: 300, damping: 30 }} className="absolute inset-0 bg-spa-burgundy/85 backdrop-blur-xl p-8 flex flex-col justify-center">
+                <motion.div initial={{ y: '100%', opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: '100%', opacity: 0 }} transition={{ type: "spring", stiffness: 300, damping: 30 }} className="absolute inset-0 bg-spa-burgundy/85 backdrop-blur-xl p-8 flex flex-col justify-center z-20">
                   <Sparkles className="text-spa-gold mb-4" size={32} />
                   <p className="font-sans text-sm md:text-base text-spa-marble leading-relaxed mb-6">
                     Apasionada por la estética avanzada, Kleyan combina técnicas de vanguardia como microneedling, exosomas y armonización facial para rejuvenecer tu piel.
@@ -148,7 +147,9 @@ export default function Home() {
           ))}
         </div>
       </section>
-       <Testimonials />
+
+      {/* TESTIMONIOS */}
+      <Testimonials />
 
       {/* FAQ */}
       <section className="w-full py-24 px-6 bg-[#2E0711]/30 border-t border-spa-gold/10">
@@ -163,7 +164,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER CON ICONOS */}
+      {/* FOOTER CON ENLACES CENTRADOS EN MÓVIL */}
       <footer className="w-full pt-16 pb-8 px-6 bg-[#1A0409] border-t border-spa-gold/20">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div className="text-center md:text-left">
@@ -173,7 +174,8 @@ export default function Home() {
           
           <div className="text-center md:text-left">
             <h4 className="font-serif text-xl text-spa-marble mb-4">Enlaces</h4>
-            <ul className="space-y-3 font-sans text-sm text-spa-marble/60">
+            {/* Usamos flex-col y items-center para centrar los enlaces en móvil */}
+            <ul className="space-y-3 font-sans text-sm text-spa-marble/60 flex flex-col items-center md:items-start">
               <li>
                 <Link href="#sobre-nosotras" className="flex items-center gap-2 hover:text-spa-gold transition-colors">
                   <UserRound size={16} className="text-spa-gold" /> Sobre Nosotras
@@ -189,16 +191,15 @@ export default function Home() {
           
           <div className="text-center md:text-left">
             <h4 className="font-serif text-xl text-spa-marble mb-4">Contacto</h4>
-            <ul className="space-y-3 font-sans text-sm text-spa-marble/60">
-              <li className="flex items-center gap-2 justify-center md:justify-start"><MapPin size={16} className="text-spa-gold" /> Santa Clara, Cuba</li>
-              <li className="flex items-center gap-2 justify-center md:justify-start"><Phone size={16} className="text-spa-gold" /> +53 58504812</li>
+            <ul className="space-y-3 font-sans text-sm text-spa-marble/60 flex flex-col items-center md:items-start">
+              <li className="flex items-center gap-2"><MapPin size={16} className="text-spa-gold" /> Santa Clara, Cuba</li>
+              <li className="flex items-center gap-2"><Phone size={16} className="text-spa-gold" /> +53 58504812</li>
             </ul>
           </div>
         </div>
         <div className="text-center border-t border-spa-gold/10 pt-6"><p className="font-sans text-[10px] text-spa-marble/40">© {new Date().getFullYear()} Sensual Girl.</p></div>
       </footer>
 
-      {/* WHATSAPP FLOTANTE */}
       <AnimatePresence>
         {showWhatsApp && (
           <motion.a initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.5 }} href="https://wa.me/5358504812?text=Hola,%20vengo%20de%20la%20web%20de%20Sensual%20Girl." target="_blank" className="fixed bottom-6 right-6 bg-[#25D366] text-white p-3 rounded-full shadow-lg z-50">
