@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, ChevronDown, Sparkles, MapPin, Phone, ArrowDown, ArrowRight } from "lucide-react";
+import { MessageCircle, ChevronDown, Sparkles, MapPin, Phone, ArrowDown, ArrowRight, ShoppingBag, UserRound } from "lucide-react";
 import PromoBanner from "@/components/PromoBanner";
+import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   const [showWhatsApp, setShowWhatsApp] = useState(false);
@@ -55,10 +56,9 @@ export default function Home() {
         <div className="relative bg-spa-burgundy px-6 py-2"><div className="w-8 h-8 border border-spa-gold rotate-45 flex items-center justify-center bg-spa-burgundy"><div className="w-3 h-3 bg-spa-gold"></div></div></div>
       </div>
 
-      {/* BANNER PROMOCIONAL (VIDEOS / GIFS CON GLASSMORPHISM) */}
       <PromoBanner />
 
-      {/* SECCIÓN SOBRE NOSOTRAS - TARJETAS GLASSMORPHISM */}
+      {/* SECCIÓN SOBRE NOSOTRAS */}
       <section id="sobre-nosotras" className="w-full py-24 px-6 relative">
         <div className="text-center mb-16">
           <Sparkles className="mx-auto text-spa-gold mb-4" size={32} />
@@ -80,8 +80,7 @@ export default function Home() {
               <div>
                 <h3 className="font-serif text-4xl text-spa-marble">Legna</h3>
                 <p className="font-sans text-xs tracking-widest uppercase text-spa-gold mb-2">Especialista en Masajes</p>
-                {/* TEXTO UX PARA INDICAR CLIC */}
-                <span className="text-xs font-sans text-spa-marble/90 flex items-center gap-1 bg-spa-burgundy/60 px-3 py-1.5 rounded-full backdrop-blur-sm border border-spa-gold/30">
+                <span className="text-xs font-sans text-spa-marble/90 inline-flex items-center gap-1 bg-spa-burgundy/60 px-3 py-1.5 rounded-full backdrop-blur-sm border border-spa-gold/30">
                   Toca para conocer más <ArrowRight size={12} />
                 </span>
               </div>
@@ -89,13 +88,7 @@ export default function Home() {
 
             <AnimatePresence>
               {activeCard === 'legna' && (
-                <motion.div 
-                  initial={{ y: '100%', opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: '100%', opacity: 0 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  className="absolute inset-0 bg-spa-burgundy/85 backdrop-blur-xl p-8 flex flex-col justify-center"
-                >
+                <motion.div initial={{ y: '100%', opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: '100%', opacity: 0 }} transition={{ type: "spring", stiffness: 300, damping: 30 }} className="absolute inset-0 bg-spa-burgundy/85 backdrop-blur-xl p-8 flex flex-col justify-center">
                   <Sparkles className="text-spa-gold mb-4" size={32} />
                   <p className="font-sans text-sm md:text-base text-spa-marble leading-relaxed mb-6">
                     Con años de experiencia en terapias corporales, Legna se especializa en liberar tensiones profundas, mejorar la circulación y brindar una relajación absoluta.
@@ -120,7 +113,7 @@ export default function Home() {
               <div>
                 <h3 className="font-serif text-4xl text-spa-marble">Kleyan</h3>
                 <p className="font-sans text-xs tracking-widest uppercase text-spa-gold mb-2">Especialista Facial</p>
-                <span className="text-xs font-sans text-spa-marble/90 flex items-center gap-1 bg-spa-burgundy/60 px-3 py-1.5 rounded-full backdrop-blur-sm border border-spa-gold/30">
+                <span className="text-xs font-sans text-spa-marble/90 inline-flex items-center gap-1 bg-spa-burgundy/60 px-3 py-1.5 rounded-full backdrop-blur-sm border border-spa-gold/30">
                   Toca para conocer más <ArrowRight size={12} />
                 </span>
               </div>
@@ -128,13 +121,7 @@ export default function Home() {
 
             <AnimatePresence>
               {activeCard === 'kleyan' && (
-                <motion.div 
-                  initial={{ y: '100%', opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: '100%', opacity: 0 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  className="absolute inset-0 bg-spa-burgundy/85 backdrop-blur-xl p-8 flex flex-col justify-center"
-                >
+                <motion.div initial={{ y: '100%', opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: '100%', opacity: 0 }} transition={{ type: "spring", stiffness: 300, damping: 30 }} className="absolute inset-0 bg-spa-burgundy/85 backdrop-blur-xl p-8 flex flex-col justify-center">
                   <Sparkles className="text-spa-gold mb-4" size={32} />
                   <p className="font-sans text-sm md:text-base text-spa-marble leading-relaxed mb-6">
                     Apasionada por la estética avanzada, Kleyan combina técnicas de vanguardia como microneedling, exosomas y armonización facial para rejuvenecer tu piel.
@@ -150,17 +137,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* GALERÍA */}
+      {/* GALERÍA - SOLO 4 IMÁGENES */}
       <section className="w-full py-24 px-6 bg-spa-burgundy">
         <div className="text-center mb-12"><h2 className="font-serif text-4xl text-spa-marble mb-4">Nuestro Trabajo</h2><p className="font-sans text-spa-marble/70 text-sm">Resultados reales, belleza natural.</p></div>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-7xl mx-auto">
-          {[1, 2, 3, 4, 5].map((num) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+          {[1, 2, 3, 4].map((num) => (
             <motion.div key={num} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: num * 0.1 }} className="relative h-64 md:h-80 w-full bg-spa-marble/5 border border-spa-gold/20 overflow-hidden group cursor-pointer">
-              <Image src={`/galeria${num}.webp`} alt={`Resultado ${num}`} fill sizes="(max-width: 768px) 50vw, 20vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
+              <Image src={`/galeria${num}.webp`} alt={`Resultado ${num}`} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
             </motion.div>
           ))}
         </div>
       </section>
+       <Testimonials />
 
       {/* FAQ */}
       <section className="w-full py-24 px-6 bg-[#2E0711]/30 border-t border-spa-gold/10">
@@ -175,12 +163,37 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
+      {/* FOOTER CON ICONOS */}
       <footer className="w-full pt-16 pb-8 px-6 bg-[#1A0409] border-t border-spa-gold/20">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          <div className="text-center md:text-left"><h3 className="font-script text-4xl text-spa-gold mb-4">Sensual Girl</h3><p className="font-sans text-xs text-spa-marble/50">Tu bienestar, mi prioridad.</p></div>
-          <div className="text-center md:text-left"><h4 className="font-serif text-xl text-spa-marble mb-4">Enlaces</h4><ul className="space-y-2 font-sans text-sm text-spa-marble/60"><li><Link href="#sobre-nosotras" className="hover:text-spa-gold">Sobre Nosotras</Link></li><li><Link href="/shop" className="hover:text-spa-gold">Tienda Shop</Link></li></ul></div>
-          <div className="text-center md:text-left"><h4 className="font-serif text-xl text-spa-marble mb-4">Contacto</h4><ul className="space-y-3 font-sans text-sm text-spa-marble/60"><li className="flex items-center gap-2 justify-center md:justify-start"><MapPin size={16} className="text-spa-gold" /> Santa Clara, Cuba</li><li className="flex items-center gap-2 justify-center md:justify-start"><Phone size={16} className="text-spa-gold" /> +53 58504812</li></ul></div>
+          <div className="text-center md:text-left">
+            <h3 className="font-script text-4xl text-spa-gold mb-4">Sensual Girl</h3>
+            <p className="font-sans text-xs text-spa-marble/50">Tu bienestar, mi prioridad.</p>
+          </div>
+          
+          <div className="text-center md:text-left">
+            <h4 className="font-serif text-xl text-spa-marble mb-4">Enlaces</h4>
+            <ul className="space-y-3 font-sans text-sm text-spa-marble/60">
+              <li>
+                <Link href="#sobre-nosotras" className="flex items-center gap-2 hover:text-spa-gold transition-colors">
+                  <UserRound size={16} className="text-spa-gold" /> Sobre Nosotras
+                </Link>
+              </li>
+              <li>
+                <Link href="/shop" className="flex items-center gap-2 hover:text-spa-gold transition-colors">
+                  <ShoppingBag size={16} className="text-spa-gold" /> Nuestra Tienda
+                </Link>
+              </li>
+            </ul>
+          </div>
+          
+          <div className="text-center md:text-left">
+            <h4 className="font-serif text-xl text-spa-marble mb-4">Contacto</h4>
+            <ul className="space-y-3 font-sans text-sm text-spa-marble/60">
+              <li className="flex items-center gap-2 justify-center md:justify-start"><MapPin size={16} className="text-spa-gold" /> Santa Clara, Cuba</li>
+              <li className="flex items-center gap-2 justify-center md:justify-start"><Phone size={16} className="text-spa-gold" /> +53 58504812</li>
+            </ul>
+          </div>
         </div>
         <div className="text-center border-t border-spa-gold/10 pt-6"><p className="font-sans text-[10px] text-spa-marble/40">© {new Date().getFullYear()} Sensual Girl.</p></div>
       </footer>

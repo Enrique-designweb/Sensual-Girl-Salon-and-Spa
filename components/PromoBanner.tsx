@@ -13,7 +13,6 @@ export default function PromoBanner() {
   return (
     <section className="w-full py-12 relative overflow-hidden bg-spa-burgundy">
       
-      {/* Efecto de Cristal Esmerilado */}
       <div className="absolute inset-0 bg-[#2E0711]/40 backdrop-blur-2xl border-y border-spa-gold/20"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 mb-8 text-center">
@@ -21,18 +20,18 @@ export default function PromoBanner() {
         <p className="font-sans text-spa-marble/60 text-sm">Descubre la magia de nuestros tratamientos.</p>
       </div>
       
-      {/* Carrusel */}
-      <div className="relative z-10 flex w-[200%]">
-        {/* Primera copia */}
+      {/* Carrusel Cinta Infinita */}
+      <div className="relative z-10 flex w-max">
+        {/* Primera tira */}
         <motion.div 
-          className="flex gap-4 w-1/2 pl-4"
+          className="flex gap-6 pr-6"
           animate={{ x: ["0%", "-100%"] }}
-          transition={{ ease: "linear", duration: 40, repeat: Infinity }}
+          transition={{ ease: "linear", duration: 35, repeat: Infinity }}
         >
           {promos.map((promo, index) => (
             <div 
               key={index} 
-              className="relative w-64 md:w-72 aspect-9/16 shrink-0 rounded-xl overflow-hidden border border-spa-gold/40 shadow-[0_8px_32px_rgba(0,0,0,0.5)] bg-spa-dark"
+              className="relative w-64 md:w-80 aspect-9/16 shrink-0 rounded-xl overflow-hidden border border-spa-gold/40 shadow-[0_8px_32px_rgba(0,0,0,0.5)] bg-spa-dark"
             >
               <video 
                 src={promo.src} 
@@ -40,7 +39,6 @@ export default function PromoBanner() {
                 loop 
                 muted 
                 playsInline 
-                // El primer video carga en auto, el resto solo metadata
                 preload={index === 0 ? "auto" : "metadata"}
                 className="object-cover w-full h-full"
               />
@@ -51,16 +49,16 @@ export default function PromoBanner() {
           ))}
         </motion.div>
         
-        {/* Segunda copia */}
+        {/* Segunda tira (duplicada para el efecto infinito) */}
         <motion.div 
-          className="flex gap-4 w-1/2 pl-4"
+          className="flex gap-6 pr-6"
           animate={{ x: ["0%", "-100%"] }}
-          transition={{ ease: "linear", duration: 40, repeat: Infinity }}
+          transition={{ ease: "linear", duration: 35, repeat: Infinity }}
         >
           {promos.map((promo, index) => (
             <div 
               key={`dup-${index}`} 
-              className="relative w-64 md:w-72 aspect-9/16 shrink-0 rounded-xl overflow-hidden border border-spa-gold/40 shadow-[0_8px_32px_rgba(0,0,0,0.5)] bg-spa-dark"
+              className="relative w-64 md:w-80 aspect-9/16 shrink-0 rounded-xl overflow-hidden border border-spa-gold/40 shadow-[0_8px_32px_rgba(0,0,0,0.5)] bg-spa-dark"
             >
               <video 
                 src={promo.src} 
